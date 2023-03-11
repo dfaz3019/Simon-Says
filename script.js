@@ -28,15 +28,7 @@ function startRound () {
 function endRound () {
     document.querySelector(`#square-${requiredNumber}`).classList.toggle(`square-${requiredNumber}`)
     roundOver = true
-    level++
 }
-
-function nextRound () {
-    if (roundOver = true) {
-        level++
-    }
-}
-
 
 playButton.addEventListener('click', () => {
     startRound()
