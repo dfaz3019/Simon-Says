@@ -4,7 +4,9 @@ let squareTwo = document.querySelector('#square-2')
 let squareThree = document.querySelector('#square-3')
 let squareFour = document.querySelector('#square-4')
 let level = 0
-var storedIndices = []
+var index = -1
+var storedIndices = [
+]
 var requiredNumber = ""
 
 function generateIndex () {
@@ -13,22 +15,31 @@ function generateIndex () {
     if (generatedNumber === 0) {
         generatedNumber = Math.floor(Math.random() * (5-1) + 1)
     } else {
-        console.log(generatedNumber)
+        // console.log(generatedNumber)
         return generatedNumber
     }
 }
 
 function startRound () {
-    requiredNumber = generateIndex()
-    storedIndices.push(requiredNumber)
-    document.querySelector(`#square-${requiredNumber}`).classList.toggle(`square-${requiredNumber}`)
-}
 
-function endRound () {
-    document.querySelector(`#square-${requiredNumber}`).classList.toggle(`square-${requiredNumber}`)
-}
+    storedIndices.push({
+        number: generateIndex(),
+        index: index+= 1
+    })
+
+    var numbersArray = storedIndices.map(item => item.number)
+    var numbersIndex = storedIndices.map(item => item.index)
+
+    for (let i = 0; i < storedIndices.length; i++) {
+
+        document.querySelector(`#square-${numbersArray[i]}`).classList.toggle(`square-${numbersArray[i]}`)
+
+
+        setTimeout(() => {
+            document.querySelector(`#square-${numbersArray[i]}`).classList.toggle(`square-${numbersArray[i]}`)
+        }, 500 * numbersIndex[i]);
+}}
 
 playButton.addEventListener('click', () => {
     startRound()
-    setTimeout(endRound, 1000)
 })
