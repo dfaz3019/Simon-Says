@@ -15,7 +15,7 @@ function generateIndex () {
     if (generatedNumber === 0) {
         generatedNumber = Math.floor(Math.random() * 4) + 1
     } else {
-        console.log(generatedNumber)
+        // console.log(generatedNumber)
         return generatedNumber
     }
 }
@@ -27,8 +27,8 @@ function startRound () {
         index: index+= 1
     })
 
-    var numbersArray = storedIndices.map(item => item.number)
-    var numbersIndex = storedIndices.map(item => item.index)
+    var numbersArray = storedIndices.map(item => item.number);
+    var numbersIndex = storedIndices.map(item => item.index);
 
     for (let i = 0; i < storedIndices.length; i++) {
 
@@ -38,6 +38,7 @@ function startRound () {
         setTimeout(() => {
             document.querySelector(`#square-${numbersArray[i]}`).classList.toggle(`square-${numbersArray[i]}`)
         }, 500 * numbersIndex[i]);
+        console.log("End of iteration, i has value of: " + i);
 }}
 
 playButton.addEventListener('click', () => {
