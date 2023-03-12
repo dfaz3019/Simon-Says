@@ -5,7 +5,7 @@ let squareThree = document.querySelector('#square-3')
 let squareFour = document.querySelector('#square-4')
 let level = 0
 var storedIndices = []
-let roundOver = true;
+var requiredNumber = ""
 
 function generateIndex () {
     var generatedNumber = Math.floor(Math.random() * (5-1) + 1)
@@ -19,15 +19,13 @@ function generateIndex () {
 }
 
 function startRound () {
-    var requiredNumber = generateIndex()
+    requiredNumber = generateIndex()
     storedIndices.push(requiredNumber)
     document.querySelector(`#square-${requiredNumber}`).classList.toggle(`square-${requiredNumber}`)
-    roundOver = false;
 }
 
 function endRound () {
     document.querySelector(`#square-${requiredNumber}`).classList.toggle(`square-${requiredNumber}`)
-    roundOver = true
 }
 
 playButton.addEventListener('click', () => {
